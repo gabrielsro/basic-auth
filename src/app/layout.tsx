@@ -6,6 +6,15 @@ export const metadata: Metadata = {
   description: "Exploring next auth",
 };
 
+function TopNav() {
+  return (
+    <nav className="flex w-full itemx-center justify-between p-4 text-xl font-semibold border-b">
+      <div>Gallery</div>
+      <div>Sign In</div>
+    </nav>
+  );
+}
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -13,7 +22,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body >{children}</body>
+      <body className="flex flex-col gap-4">
+        <TopNav />
+        {children}
+      </body>
     </html>
   );
 }
