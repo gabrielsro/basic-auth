@@ -10,6 +10,8 @@ const mockUrls = [
 
 const mockImages = mockUrls.map((url, index) => ({ id: index + 1, url }));
 
+export const dynamic = "force-dynamic";
+
 export default async function Home() {
   const images = await db.query.images.findMany();
   console.log(images);
@@ -24,7 +26,6 @@ export default async function Home() {
             <img src={image.url} alt="Placeholder" />
           </div>
         ))}
-        <p>{typeof process.env.POSTGRES_URL}</p>
       </div>
     </main>
   );
