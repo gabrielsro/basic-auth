@@ -1,19 +1,12 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { ClerkProvider } from "@clerk/nextjs";
+import TopNav from "./_components/topnav";
 
 export const metadata: Metadata = {
   title: "Basic Auth",
   description: "Exploring next auth",
 };
-
-function TopNav() {
-  return (
-    <nav className="flex w-full itemx-center justify-between p-4 text-xl font-semibold border-b">
-      <div>Gallery</div>
-      <div>Sign In</div>
-    </nav>
-  );
-}
 
 export default function RootLayout({
   children,
@@ -21,11 +14,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className="flex flex-col gap-4">
-        <TopNav />
-        {children}
-      </body>
-    </html>
+    <ClerkProvider>
+      <html lang="en">
+        <body className="flex flex-col gap-4">
+          <TopNav />
+          {children}
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }
