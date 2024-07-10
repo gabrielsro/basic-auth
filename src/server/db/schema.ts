@@ -14,7 +14,7 @@ export const images = createTable(
   {
     id: serial("id").primaryKey(),
     name: varchar("name", { length: 256 }).notNull(),
-    url: varchar("url", { length: 1024 }),
+    url: varchar("url", { length: 1024 }).notNull(),
 
     userId: varchar("userId", { length: 256 }),
 
@@ -24,6 +24,6 @@ export const images = createTable(
     updatedAt: timestamp("updatedAt"),
   },
   (example) => ({
-    nameIndex: index("name_idx").on(example.name), //What is this last shit?
+    nameIndex: index("name_idx").on(example.name), //Index columns for performant access
   })
 );
